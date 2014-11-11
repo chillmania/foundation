@@ -43,12 +43,19 @@ $switch-active-color: $primary-color !default;
 @mixin switch-base(
   $transition-speed:$switch-paddle-transition-speed,
   $transition-ease:$switch-paddle-transition-ease) {
- 
+
+  padding: 0;
+  border: none;
+  position: relative;
+  outline: 0;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 
   // Default label styles for type and transition
   label {
     display: block;
-    margin-bottom: $switch-height-med / 2;
+    margin-bottom: ($switch-height-med / 2);
     position: relative;
     color: transparent;
     background: $switch-bg;
@@ -80,8 +87,11 @@ $switch-active-color: $primary-color !default;
     content: "";
     display: block;
     background: $switch-paddle-bg;
-    position: absolute; top: .25rem; left: .25rem;
-    width: $switch-height-med - 0.5rem; height: $switch-height-med - 0.5rem;
+    position: absolute;
+    top: .25rem;
+    left: .25rem;
+    width: $switch-height-med - 0.5rem;
+    height: $switch-height-med - 0.5rem;
 
     -webkit-transition: left $transition-speed $transition-ease;
     -moz-transition: left $transition-speed $transition-ease;
@@ -109,11 +119,13 @@ $switch-active-color: $primary-color !default;
 @mixin switch-size($height: $switch-height-med) {
 
   label {
-    width: $height * 2; height: $height;
+    width: $height * 2;
+    height: $height;
   }
 
   label:after {
-    width: $height - 0.5rem; height: $height - 0.5rem;
+    width: $height - 0.5rem;
+    height: $height - 0.5rem;
   }
 
   input:checked + label:after {
@@ -186,10 +198,7 @@ $switch-active-color: $primary-color !default;
   $paddle-bg: $switch-paddle-bg,
   $active-color: $switch-active-color,
   $radius:false,
-    $base-style:true) {
-    padding: 0;
-    border: none;
-    position: relative;
+  $base-style:true) {
     @include switch-base($transition-speed, $transition-ease);
     @include switch-size($height);
     @include switch-style($paddle-bg, $radius, $base-style);
@@ -210,7 +219,7 @@ $switch-active-color: $primary-color !default;
         &.tiny { @include switch-size($switch-height-tny); }
 
         // Add a radius to the switch
-        &.radius { 
+        &.radius {
           label { @include radius(4px); }
           label:after { @include radius(3px); }
         }
