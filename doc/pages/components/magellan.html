@@ -19,6 +19,8 @@ You can create the fixed navigation structure for Magellan using minimal markup.
 
 {{> examples_magellan_basic_rendered}}
 
+<p>The <a href="subnav.html">sub nav</a> is currently the only component compatible with Magellan.</p>
+
 ***
 
 <a name="destination"></a>
@@ -62,6 +64,28 @@ You can adjust lots of settings. For example:
 #### JS
 
 {{> examples_magellan_options}}
+
+***
+
+### Adding New Content After Page Load
+
+If you add new content after the page has been loaded, you will need to reinitialize the Foundation JavaScript by running the following:
+
+{{#markdown}}
+```javascript
+$(document).foundation(); 
+```
+{{/markdown}}
+
+Reflow will make Foundation check the DOM for any elements and re-apply any listeners to them.
+
+{{#markdown}}
+```javascript
+$(document).foundation('magellan', 'reflow');
+```
+{{/markdown}}
+
+***
 
 ### Sass Errors?
 
